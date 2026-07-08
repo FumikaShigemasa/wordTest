@@ -6,7 +6,7 @@ public class Menu {
 
 	Scanner scan = new Scanner(System.in);
 
-	public Integer mainMenu() {
+	public Integer showMenu() {
 
 		System.out.println("分野を選択してください");
 		System.out.println("1：テクノロジ系");
@@ -17,6 +17,10 @@ public class Menu {
 		Integer select = scan.nextInt();
 
 		return select - 1;
+	}
+
+	public void showQuestion(Integer select) {
+
 	}
 
 }
