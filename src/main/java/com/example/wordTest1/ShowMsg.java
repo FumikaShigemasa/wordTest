@@ -2,7 +2,7 @@ package com.example.wordTest1;
 
 import java.util.Scanner;
 
-public class Menu {
+public class ShowMsg {
 
 	Scanner scan = new Scanner(System.in);
 
