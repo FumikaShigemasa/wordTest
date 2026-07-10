@@ -3,6 +3,8 @@ package com.example.wordTest1;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JFileChooser;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -11,6 +13,25 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ReadExcel {
+
+	public String fileChoose() {
+
+		String fileName = "";
+
+		JFileChooser fileChooser = new JFileChooser();
+		int selected = fileChooser.showOpenDialog(null);
+
+		if (selected == JFileChooser.APPROVE_OPTION) {
+			File file = fileChooser.getSelectedFile();
+			fileName = file.getAbsolutePath();
+			System.out.println("選択されたファイル: " + file.getAbsolutePath());
+		} else {
+			fileName = "cancel";
+			System.out.println("キャンセルされました。");
+		}
+
+		return fileName;
+	}
 
 	public Workbook readWorkbook(String fileName) {
 
