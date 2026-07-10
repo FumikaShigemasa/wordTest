@@ -12,20 +12,13 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ReadExcel {
 
-	//ファイルのパスを指定
-	String file = "C:\\Users\\fumika.shigemasa\\Desktop\\研修\\基本情報\\word.xlsx";
+	public Workbook readWorkbook(String fileName) {
 
-	//Excelファイルのシートを取得する
-	//0→テクノロジ系　1→マネジメント系　2→ストラテジ系
-	public Sheet readSheet(Integer page) {
 		Workbook workbook = null;
-		Sheet sheet = null;
 
 		try {
 			//excelのファイルをWorkbook型で取得
-			workbook = WorkbookFactory.create(new File(file));
-			//page番のシートを取得
-			sheet = workbook.getSheetAt(page);
+			workbook = WorkbookFactory.create(new File(fileName));
 
 		} catch (EncryptedDocumentException e) {
 			e.printStackTrace();
@@ -40,6 +33,20 @@ public class ReadExcel {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+
+		return workbook;
+
+	}
+
+	//Excelファイルのシートを取得する
+	//0→テクノロジ系　1→マネジメント系　2→ストラテジ系
+	public Sheet readSheet(Workbook workbook, Integer page) {
+
+		Sheet sheet = null;
+
+		if (workbook != null) {
+			sheet = workbook.getSheetAt(page);
 		}
 
 		return sheet;
