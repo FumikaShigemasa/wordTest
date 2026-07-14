@@ -1,4 +1,4 @@
-package com.example.wordTest1;
+package com.example.wordTest1.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,6 +40,7 @@ public class ReadExcel {
 		try {
 			//excelのファイルをWorkbook型で取得
 			workbook = WorkbookFactory.create(new File(fileName));
+			System.out.println("完了");
 
 		} catch (EncryptedDocumentException e) {
 			e.printStackTrace();

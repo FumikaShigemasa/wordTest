@@ -1,4 +1,4 @@
-package com.example.wordTest1;
+package com.example.wordTest1.service;
 
 import java.util.ArrayList;
 import java.util.List;
