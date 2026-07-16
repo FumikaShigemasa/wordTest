@@ -21,6 +21,14 @@ public class MainController {
 	private JPanel cardPanel;
 	private CardLayout cardLayout;
 
+	public ReadExcelService getReadExcel() {
+		return readExcel;
+	}
+
+	public QuizModel getQuiz() {
+		return quiz;
+	}
+
 	public void setCardPanel(JPanel cardPanel) {
 		this.cardPanel = cardPanel;
 	}
@@ -51,7 +59,7 @@ public class MainController {
 
 	//SelectGenre startBtn
 	//ジャンルと出題形式を選択して単語テストを開始する
-	public void start(
+	public QuizModel start(
 			ButtonGroup genre,
 			ButtonGroup format) {
 
@@ -75,6 +83,8 @@ public class MainController {
 		}
 
 		cardLayout.show(cardPanel, "quiz");
+
+		return quiz;
 	}
 
 	//Quiz button1-button4
