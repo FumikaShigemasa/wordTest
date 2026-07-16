@@ -12,34 +12,38 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-public class ReadExcel {
+import com.example.wordTest1.model.Excel;
 
-	public String fileChoose() {
+public class ReadExcelService {
 
-		String fileName = "";
+	//エクスプローラーを開いてFileオブジェクトを取得する
+	public File fileChoose() {
+
+		File file = null;
 
 		JFileChooser fileChooser = new JFileChooser();
 		int selected = fileChooser.showOpenDialog(null);
 
 		if (selected == JFileChooser.APPROVE_OPTION) {
-			File file = fileChooser.getSelectedFile();
-			fileName = file.getAbsolutePath();
+			file = fileChooser.getSelectedFile();
 			System.out.println("選択されたファイル: " + file.getAbsolutePath());
 		} else {
-			fileName = "cancel";
 			System.out.println("キャンセルされました。");
 		}
 
-		return fileName;
+		return file;
 	}
 
-	public Workbook readWorkbook(String fileName) {
+	//ExcelファイルをWorkbookオブジェクトとして取得
+	public void readWorkbook(
+			File file,
+			Excel excel) {
 
 		Workbook workbook = null;
 
 		try {
 			//excelのファイルをWorkbook型で取得
-			workbook = WorkbookFactory.create(new File(fileName));
+			workbook = WorkbookFactory.create(file);
 			System.out.println("完了");
 
 		} catch (EncryptedDocumentException e) {
@@ -57,13 +61,16 @@ public class ReadExcel {
 			}
 		}
 
-		return workbook;
+		//Excelモデルに渡す
+		excel.setWorkBook(workbook);
 
 	}
 
 	//Excelファイルのシートを取得する
 	//0→テクノロジ系　1→マネジメント系　2→ストラテジ系
-	public Sheet readSheet(Workbook workbook, Integer page) {
+	public void readSheet(Integer page, Excel excel) {
+
+		Workbook workbook = excel.getWorkBook();
 
 		Sheet sheet = null;
 
@@ -71,11 +78,15 @@ public class ReadExcel {
 			sheet = workbook.getSheetAt(page);
 		}
 
-		return sheet;
+		//Excelモデルに渡す
+		excel.setSheet(sheet);
 	}
 
 	//行を取得
-	public Row questionRow(Sheet sheet, Integer rowNum) {
+	public Row readRow(Integer rowNum, Excel excel) {
+
+		Sheet sheet = excel.getSheet();
+
 		Row row = null;
 
 		if (sheet != null) {
@@ -86,28 +97,40 @@ public class ReadExcel {
 		return row;
 	}
 
-	//問題を取得
-	public String getQuestion(Row row) {
-		Cell cell = row.getCell(1);
-		String question = "";
+	//意味を取得
+	public String getMean(Row row) {
 
-		if (cell != null) {
-			question = cell.getStringCellValue();
+		//rowから単語のcellを取得
+		Cell cell = null;
+		if (row != null) {
+			cell = row.getCell(0);
 		}
 
-		return question;
+		//取得したcellの値(単語)を取得
+		String mean = "";
+		if (cell != null) {
+			mean = cell.getStringCellValue();
+		}
+
+		return mean;
 	}
 
-	//答えを取得
-	public String getAnswer(Row row) {
-		Cell cell = row.getCell(0);
-		String answer = "";
+	//単語を取得
+	public String getWord(Row row) {
 
-		if (cell != null) {
-			answer = cell.getStringCellValue();
+		//rowから単語のcellを取得
+		Cell cell = null;
+		if (row != null) {
+			cell = row.getCell(0);
 		}
 
-		return answer;
+		//取得したcellの値(単語)を取得
+		String word = "";
+		if (cell != null) {
+			word = cell.getStringCellValue();
+		}
+
+		return word;
 	}
 
 }
