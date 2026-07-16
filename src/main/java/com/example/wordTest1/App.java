@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.example.wordTest1.controller.MainController;
+import com.example.wordTest1.view.Quiz;
 import com.example.wordTest1.view.SelectFile;
 import com.example.wordTest1.view.SelectGenre;
 import com.example.wordTest1.view.SelectMode;
@@ -35,7 +36,7 @@ public class App extends JFrame {
 		SelectFile selectfile = new SelectFile(controller);
 		SelectMode selectMode = new SelectMode(controller);
 		SelectGenre selectGenre = new SelectGenre(controller);
-		//		Quiz quiz = new Quiz(controller);
+		Quiz quiz = new Quiz(controller, controller.getQuiz());
 
 		//CardLayoutが設定されたpanelに各panelを追加する
 		cardPanel = new JPanel();
@@ -45,6 +46,7 @@ public class App extends JFrame {
 		cardPanel.add(selectfile);
 		cardPanel.add(selectMode, "selectMode");
 		cardPanel.add(selectGenre, "selectGenre");
+		cardPanel.add(quiz, "quiz");
 
 		//MainControllerのフィールドにあるcardLayoutとcardPanelを更新
 		controller.setCardLayout(cardLayout);
