@@ -7,8 +7,8 @@ import java.util.Random;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
-import com.example.wordTest1.model.Excel;
-import com.example.wordTest1.model.Question;
+import com.example.wordTest1.model.ExcelModel;
+import com.example.wordTest1.model.QuizModel;
 
 public class MakeQuestionService {
 
@@ -29,7 +29,7 @@ public class MakeQuestionService {
 
 			while (check) {
 				//endまでの数字をランダムで生成
-				Integer rowNum = rand.nextInt(end);
+				Integer rowNum = rand.nextInt(end - 1) + 1;
 
 				//rowNumListが0のときに無限ループに入るのを防止
 				if (rowNumList[0] == null) {
@@ -62,7 +62,7 @@ public class MakeQuestionService {
 	}
 
 	//行のリストを取得
-	public List<Row> getRowList(Excel excel, Integer[] rowNumList) {
+	public List<Row> getRowList(ExcelModel excel, Integer[] rowNumList) {
 
 		List<Row> rowList = new ArrayList<Row>();
 		for (Integer rowNum : rowNumList) {
@@ -73,10 +73,11 @@ public class MakeQuestionService {
 		return rowList;
 	}
 
+	//==========意味→単語==========
 	//問題と選択肢のリストを作成
-	public Question setQuestion(
+	public QuizModel makeMeanQuestion(
 			List<Row> rowList,
-			Question question) {
+			QuizModel quiz) {
 
 		//rowNumListから問題とする番号をランダムに取る
 		Integer index = rand.nextInt(4);
@@ -102,19 +103,84 @@ public class MakeQuestionService {
 		}
 
 		//questionに渡す
-		question.setQuestionStr(questionStr);
-		question.setAnswer(answer);
-		question.setOptionList(optionList);
+		quiz.setQuestionStr(questionStr);
+		quiz.setAnswer(answer);
+		quiz.setOptionList(optionList);
 
-		System.out.println(question.getQuestionStr());
+		System.out.println(quiz.getQuestionStr());
 
-		for (String option : question.getOptionList()) {
+		for (String option : quiz.getOptionList()) {
 			System.out.println(option);
 		}
 
-		System.out.println(question.getAnswer());
+		System.out.println(quiz.getAnswer());
 
-		return question;
+		return quiz;
 	}
 
+	public void setMeanQuestion(
+			ExcelModel excel,
+			QuizModel quiz) {
+
+		Integer[] rowNumList = rowNum(excel.getSheet());
+		List<Row> rowList = getRowList(excel, rowNumList);
+		makeMeanQuestion(rowList, quiz);
+	}
+
+	//----------------------------
+
+	//==========単語→意味==========
+	//問題と選択肢のリストを作成
+	public QuizModel makeWordQuestion(
+			List<Row> rowList,
+			QuizModel quiz) {
+
+		//rowNumListから問題とする番号をランダムに取る
+		Integer index = rand.nextInt(4);
+
+		//問題と選択肢を生成
+		String questionStr = "";
+		String answer = "";
+		String[] optionList = new String[4];
+
+		for (int i = 0; i < rowList.size(); i++) {
+			Row row = rowList.get(i);
+			if (i == index) {
+				//問題と正答を取得
+				questionStr = readExcel.getWord(row);
+				answer = readExcel.getMean(row);
+				optionList[i] = answer;
+
+			} else {
+				//誤答択を取得
+				String option = readExcel.getMean(row);
+				optionList[i] = option;
+			}
+		}
+
+		//quizに渡す
+		quiz.setQuestionStr(questionStr);
+		quiz.setAnswer(answer);
+		quiz.setOptionList(optionList);
+
+		System.out.println(quiz.getQuestionStr());
+
+		for (String option : quiz.getOptionList()) {
+			System.out.println(option);
+		}
+
+		System.out.println(quiz.getAnswer());
+
+		return quiz;
+	}
+
+	public void setWordQuestion(
+			ExcelModel excel,
+			QuizModel quiz) {
+
+		Integer[] rowNumList = rowNum(excel.getSheet());
+		List<Row> rowList = getRowList(excel, rowNumList);
+		makeWordQuestion(rowList, quiz);
+	}
+	//----------------------------
 }

@@ -1,6 +1,6 @@
 package com.example.wordTest1.model;
 
-public class Word {
+public class WordModel {
 
 	private String word;
 	private String mean;

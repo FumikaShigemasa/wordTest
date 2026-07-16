@@ -1,6 +1,6 @@
 package com.example.wordTest1.model;
 
-public class Question {
+public class QuizModel {
 
 	private String questionStr;//問題
 	private String answer;//正答

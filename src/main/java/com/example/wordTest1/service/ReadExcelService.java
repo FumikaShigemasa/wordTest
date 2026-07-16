@@ -12,7 +12,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-import com.example.wordTest1.model.Excel;
+import com.example.wordTest1.model.ExcelModel;
 
 public class ReadExcelService {
 
@@ -37,7 +37,7 @@ public class ReadExcelService {
 	//ExcelファイルをWorkbookオブジェクトとして取得
 	public void readWorkbook(
 			File file,
-			Excel excel) {
+			ExcelModel excel) {
 
 		Workbook workbook = null;
 
@@ -68,7 +68,7 @@ public class ReadExcelService {
 
 	//Excelファイルのシートを取得する
 	//0→テクノロジ系　1→マネジメント系　2→ストラテジ系
-	public void readSheet(Integer page, Excel excel) {
+	public void readSheet(Integer page, ExcelModel excel) {
 
 		Workbook workbook = excel.getWorkBook();
 
@@ -83,7 +83,7 @@ public class ReadExcelService {
 	}
 
 	//行を取得
-	public Row readRow(Integer rowNum, Excel excel) {
+	public Row readRow(Integer rowNum, ExcelModel excel) {
 
 		Sheet sheet = excel.getSheet();
 
@@ -103,7 +103,7 @@ public class ReadExcelService {
 		//rowから単語のcellを取得
 		Cell cell = null;
 		if (row != null) {
-			cell = row.getCell(0);
+			cell = row.getCell(1);
 		}
 
 		//取得したcellの値(単語)を取得
