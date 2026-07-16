@@ -9,11 +9,12 @@ import javax.swing.JPanel;
 
 import com.example.wordTest1.controller.MainController;
 import com.example.wordTest1.view.SelectFile;
+import com.example.wordTest1.view.SelectGenre;
 import com.example.wordTest1.view.SelectMode;
 
 public class App extends JFrame {
 
-	MainController controller = new MainController();
+	private final MainController controller = new MainController();
 
 	JPanel cardPanel;
 	CardLayout cardLayout;
@@ -30,8 +31,11 @@ public class App extends JFrame {
 		setBounds(100, 100, 700, 700);//ウィンドウの位置とサイズを設定（x,y,width,hight）
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×ボタンを押したときにプログラムを終了
 
+		//各画面をオブジェクト化
 		SelectFile selectfile = new SelectFile(controller);
 		SelectMode selectMode = new SelectMode(controller);
+		SelectGenre selectGenre = new SelectGenre(controller);
+		//		Quiz quiz = new Quiz(controller);
 
 		//CardLayoutが設定されたpanelに各panelを追加する
 		cardPanel = new JPanel();
@@ -40,6 +44,7 @@ public class App extends JFrame {
 
 		cardPanel.add(selectfile);
 		cardPanel.add(selectMode, "selectMode");
+		cardPanel.add(selectGenre, "selectGenre");
 
 		//MainControllerのフィールドにあるcardLayoutとcardPanelを更新
 		controller.setCardLayout(cardLayout);

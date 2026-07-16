@@ -3,7 +3,7 @@ package com.example.wordTest1.model;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-public class Excel {
+public class ExcelModel {
 
 	private Workbook workBook;
 	private Sheet sheet;

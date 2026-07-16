@@ -7,18 +7,18 @@ import com.example.wordTest1.controller.MainController;
 
 public class SelectMode extends JPanel {
 
-	public SelectMode(MainController mainController) {
+	public SelectMode(MainController controller) {
 
 		//継承したJPanelのコンストラクタ
 		super();
 
 		//クイズモードボタン
 		JButton quizBtn = new JButton("クイズモード");
-		quizBtn.addActionListener(e -> mainController.selectQuiz());
+		quizBtn.addActionListener(e -> controller.selectQuiz());
 
 		//単語帳モードボタン
 		JButton wordBookBtn = new JButton("単語帳モード");
-		wordBookBtn.addActionListener(e -> mainController.selectWordBook());
+		wordBookBtn.addActionListener(e -> controller.selectWordBook());
 
 		//ボタンを追加
 		add(quizBtn);
