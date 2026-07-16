@@ -1,31 +1,29 @@
 package com.example.wordTest1.view;
 
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class SelectMode {
+import com.example.wordTest1.controller.MainController;
 
-	public JPanel selectMode(ActionListener actionListner) {
-		//panelを作成
-		JPanel selectModePage = new JPanel();
+public class SelectMode extends JPanel {
+
+	public SelectMode(MainController mainController) {
+
+		//継承したJPanelのコンストラクタ
+		super();
 
 		//クイズモードボタン
 		JButton quizBtn = new JButton("クイズモード");
-		quizBtn.addActionListener(actionListner);
-		quizBtn.setActionCommand("quizMode");
+		quizBtn.addActionListener(e -> mainController.selectQuiz());
 
 		//単語帳モードボタン
 		JButton wordBookBtn = new JButton("単語帳モード");
-		wordBookBtn.addActionListener(actionListner);
-		wordBookBtn.setActionCommand("wordBookMode");
+		wordBookBtn.addActionListener(e -> mainController.selectWordBook());
 
 		//ボタンを追加
-		selectModePage.add(quizBtn);
-		selectModePage.add(wordBookBtn);
+		add(quizBtn);
+		add(wordBookBtn);
 
-		return selectModePage;
 	}
 
 }
