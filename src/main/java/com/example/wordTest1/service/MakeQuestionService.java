@@ -122,6 +122,8 @@ public class MakeQuestionService {
 			ExcelModel excel,
 			QuizModel quiz) {
 
+		quiz.setFormat("mean");
+
 		Integer[] rowNumList = rowNum(excel.getSheet());
 		List<Row> rowList = getRowList(excel, rowNumList);
 		makeMeanQuestion(rowList, quiz);
@@ -178,9 +180,38 @@ public class MakeQuestionService {
 			ExcelModel excel,
 			QuizModel quiz) {
 
+		quiz.setFormat("word");
+
 		Integer[] rowNumList = rowNum(excel.getSheet());
 		List<Row> rowList = getRowList(excel, rowNumList);
 		makeWordQuestion(rowList, quiz);
 	}
 	//----------------------------
+
+	//==========正誤判定==========
+	public boolean judge(
+			Integer btnNum,
+			QuizModel quizModel) {
+		//選択した解答と正答のStringを取得
+		String correct = quizModel.getAnswer();
+		String select = quizModel.getOptionList()[btnNum - 1];
+
+		System.out.println("正誤判定");
+		System.out.println("解答：" + btnNum + select + "正解：" + correct);
+
+		//正誤判定（t→正解　f→不正解）
+		boolean judge;
+		if (correct.equals(select)) {
+			judge = true;
+			System.out.println("正解");
+		} else {
+			judge = false;
+			System.out.println("不正解");
+		}
+
+		return judge;
+
+	}
+	//---------------------------
+
 }
