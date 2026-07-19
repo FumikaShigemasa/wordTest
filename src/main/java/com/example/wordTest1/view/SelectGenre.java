@@ -7,11 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import com.example.wordTest1.controller.MainController;
+import com.example.wordTest1.presenter.MainPresenter;
 
 public class SelectGenre extends JPanel {
 
-	public SelectGenre(MainController controller) {
+	public SelectGenre(MainPresenter controller) {
 
 		//継承したJPanelのコンストラクタ
 		super();

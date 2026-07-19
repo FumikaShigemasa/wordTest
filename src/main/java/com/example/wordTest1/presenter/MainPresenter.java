@@ -1,4 +1,4 @@
-package com.example.wordTest1.controller;
+package com.example.wordTest1.presenter;
 
 import java.awt.CardLayout;
 
@@ -16,7 +16,7 @@ import com.example.wordTest1.view.Quiz;
 import com.example.wordTest1.view.SelectGenre;
 import com.example.wordTest1.view.SelectMode;
 
-public class MainController {
+public class MainPresenter {
 
 	private final ReadExcelService readExcel = new ReadExcelService();
 	private final MakeQuestionService makeQuestion = new MakeQuestionService();
