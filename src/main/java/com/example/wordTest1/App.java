@@ -7,14 +7,14 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.example.wordTest1.controller.MainController;
+import com.example.wordTest1.presenter.MainPresenter;
 import com.example.wordTest1.view.SelectFile;
 
 public class App extends JFrame {
 
 	//Gitてすと！！
 
-	private final MainController controller = new MainController();
+	private final MainPresenter controller = new MainPresenter();
 
 	JPanel cardPanel;
 	CardLayout cardLayout;

@@ -8,13 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.example.wordTest1.controller.MainController;
 import com.example.wordTest1.model.QuizModel;
+import com.example.wordTest1.presenter.MainPresenter;
 
 public class Quiz extends JPanel {
 
 	public Quiz(
-			MainController controller,
+			MainPresenter controller,
 			QuizModel quizModel) {
 
 		//======問題文======

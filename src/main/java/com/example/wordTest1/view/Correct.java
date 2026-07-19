@@ -4,11 +4,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.example.wordTest1.controller.MainController;
+import com.example.wordTest1.presenter.MainPresenter;
 
 public class Correct extends JPanel {
 
-	public Correct(MainController controller) {
+	public Correct(MainPresenter controller) {
 		//正解
 		JLabel label = new JLabel("正解！！");
 
