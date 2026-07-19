@@ -12,6 +12,8 @@ import com.example.wordTest1.view.SelectFile;
 
 public class App extends JFrame {
 
+	//Gitてすと！！
+
 	private final MainController controller = new MainController();
 
 	JPanel cardPanel;
