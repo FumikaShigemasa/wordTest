@@ -9,6 +9,7 @@ import com.example.wordTest1.model.ExcelModel;
 import com.example.wordTest1.model.QuizModel;
 import com.example.wordTest1.service.MakeQuestionService;
 import com.example.wordTest1.service.ReadExcelService;
+import com.example.wordTest1.view.Quiz;
 
 public class MainController {
 
@@ -59,7 +60,7 @@ public class MainController {
 
 	//SelectGenre startBtn
 	//ジャンルと出題形式を選択して単語テストを開始する
-	public QuizModel start(
+	public void start(
 			ButtonGroup genre,
 			ButtonGroup format) {
 
@@ -82,9 +83,11 @@ public class MainController {
 
 		}
 
+		//ページの遷移先を設定
+		Quiz quizPanel = new Quiz(this, quiz);
+		cardPanel.add(quizPanel, "quiz");
 		cardLayout.show(cardPanel, "quiz");
 
-		return quiz;
 	}
 
 	//Quiz button1-button4
