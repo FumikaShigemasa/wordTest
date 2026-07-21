@@ -3,11 +3,11 @@ package com.example.wordTest1.view;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.example.wordTest1.controller.MainController;
+import com.example.wordTest1.presenter.MainPresenter;
 
 public class SelectFile extends JPanel {
 
-	public SelectFile(MainController mainController) {
+	public SelectFile(MainPresenter mainController) {
 
 		//継承したJPanelのコンストラクタ
 		super();

@@ -2,11 +2,20 @@ package com.example.wordTest1.model;
 
 public class QuizModel {
 
+	private String format;//出題形式
 	private String questionStr;//問題
 	private String answer;//正答
 	private String[] optionList = new String[4];//選択肢
 
 	//ゲッターとセッター
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+
 	public String getQuestionStr() {
 		return questionStr;
 	}
