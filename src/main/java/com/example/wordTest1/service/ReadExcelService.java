@@ -48,8 +48,10 @@ public class ReadExcelService {
 
 		} catch (EncryptedDocumentException e) {
 			e.printStackTrace();
+			System.exit(0);
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.exit(0);
 		} finally {
 			try {
 				if (workbook != null) {
@@ -58,6 +60,7 @@ public class ReadExcelService {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
+				System.exit(0);
 			}
 		}
 

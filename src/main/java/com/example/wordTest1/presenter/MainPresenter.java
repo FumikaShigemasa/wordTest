@@ -52,7 +52,7 @@ public class MainPresenter {
 		readExcel.readWorkbook(readExcel.fileChoose(), excel);
 
 		//selectModeの画面に遷移
-		SelectMode selectMode = new SelectMode(this);
+		JPanel selectMode = new SelectMode(this);
 		cardPanel.add(selectMode, "selectMode");
 		cardLayout.show(cardPanel, "selectMode");
 	}
@@ -61,7 +61,7 @@ public class MainPresenter {
 	//クイズモードを選択
 	public void selectQuiz() {
 		//SelectGenreの画面に遷移
-		SelectGenre selectGenre = new SelectGenre(this);
+		JPanel selectGenre = new SelectGenre(this);
 		cardPanel.add(selectGenre, "selectGenre");
 		cardLayout.show(cardPanel, "selectGenre");
 	}
@@ -99,7 +99,7 @@ public class MainPresenter {
 		}
 
 		//Quiz画面に遷移
-		Quiz quiz = new Quiz(this, quizModel);
+		JPanel quiz = new Quiz(this, quizModel);
 		cardPanel.add(quiz, "quiz");
 		cardLayout.show(cardPanel, "quiz");
 	}
@@ -115,11 +115,11 @@ public class MainPresenter {
 
 		//正解→Correct 不正解→Incorrectに画面遷移
 		if (judge) {
-			Correct correct = new Correct(this);
+			JPanel correct = new Correct(this);
 			cardPanel.add(correct, "correct");
 			cardLayout.show(cardPanel, "correct");
 		} else {
-			Incorrect incorrect = new Incorrect(this);
+			JPanel incorrect = new Incorrect(this);
 			cardPanel.add(incorrect, "incorrect");
 			cardLayout.show(cardPanel, "incorrect");
 
@@ -140,14 +140,17 @@ public class MainPresenter {
 		}
 
 		//Quiz画面に遷移
-		Quiz quiz = new Quiz(this, quizModel);
+		JPanel quiz = new Quiz(this, quizModel);
 		cardPanel.add(quiz, "quiz");
 		cardLayout.show(cardPanel, "quiz");
 
 	}
 
 	public void mainMenu() {
-
+		//SelectMode画面に遷移
+		JPanel selectMode = new SelectMode(this);
+		cardPanel.add(selectMode, "selectMode");
+		cardLayout.show(cardPanel, "selectMode");
 	}
 
 }
