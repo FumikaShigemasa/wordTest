@@ -12,8 +12,6 @@ import com.example.wordTest1.view.SelectFile;
 
 public class App extends JFrame {
 
-	//Gitてすと！！
-
 	private final MainPresenter controller = new MainPresenter();
 
 	JPanel cardPanel;
@@ -32,7 +30,7 @@ public class App extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×ボタンを押したときにプログラムを終了
 
 		//最初の画面をオブジェクト化
-		SelectFile selectfile = new SelectFile(controller);
+		JPanel selectfile = new SelectFile(controller);
 
 		//CardLayoutが設定されたpanelに初期画面のpanelを追加する
 		cardPanel = new JPanel();
