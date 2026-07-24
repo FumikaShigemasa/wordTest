@@ -1,4 +1,4 @@
-package com.example.wordTest1.view;
+package com.example.wordTest1.view.quiz;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -35,8 +35,8 @@ public class Correct extends JPanel {
 		result.add(correct);
 
 		//ボタンパネル
-		next.setAlignmentY(Component.CENTER_ALIGNMENT);
-		mainMenu.setAlignmentY(Component.CENTER_ALIGNMENT);
+		next.setAlignmentX(Component.CENTER_ALIGNMENT);
+		mainMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JPanel select = new JPanel();
 		select.setLayout(new BoxLayout(select, BoxLayout.X_AXIS));

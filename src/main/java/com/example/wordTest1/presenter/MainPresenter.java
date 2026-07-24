@@ -10,11 +10,11 @@ import com.example.wordTest1.model.ExcelModel;
 import com.example.wordTest1.model.QuizModel;
 import com.example.wordTest1.service.MakeQuestionService;
 import com.example.wordTest1.service.ReadExcelService;
-import com.example.wordTest1.view.Correct;
-import com.example.wordTest1.view.Incorrect;
-import com.example.wordTest1.view.Quiz;
-import com.example.wordTest1.view.SelectGenre;
 import com.example.wordTest1.view.SelectMode;
+import com.example.wordTest1.view.quiz.Correct;
+import com.example.wordTest1.view.quiz.Incorrect;
+import com.example.wordTest1.view.quiz.Quiz;
+import com.example.wordTest1.view.quiz.SelectGenre;
 
 public class MainPresenter {
 

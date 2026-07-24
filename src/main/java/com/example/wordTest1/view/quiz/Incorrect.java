@@ -1,4 +1,4 @@
-package com.example.wordTest1.view;
+package com.example.wordTest1.view.quiz;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
