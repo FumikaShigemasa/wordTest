@@ -1,9 +1,8 @@
 package com.example.wordTest1.view.quiz;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.FlowLayout;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,19 +26,13 @@ public class Correct extends JPanel {
 
 		//レイアウト
 		//結果表示パネル
-		correct.setAlignmentX(Component.CENTER_ALIGNMENT);
-		correct.setAlignmentY(Component.CENTER_ALIGNMENT);
-
 		JPanel result = new JPanel();
-		result.setLayout(new BoxLayout(result, BoxLayout.Y_AXIS));
+		result.setLayout(new FlowLayout(FlowLayout.CENTER));
 		result.add(correct);
 
 		//ボタンパネル
-		next.setAlignmentX(Component.CENTER_ALIGNMENT);
-		mainMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
-
 		JPanel select = new JPanel();
-		select.setLayout(new BoxLayout(select, BoxLayout.X_AXIS));
+		select.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
 		select.add(next);
 		select.add(mainMenu);
 
