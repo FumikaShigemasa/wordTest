@@ -115,7 +115,7 @@ public class MainPresenter {
 
 		//正解→Correct 不正解→Incorrectに画面遷移
 		if (judge) {
-			JPanel correct = new Correct(this);
+			JPanel correct = new Correct(this, quizModel);
 			cardPanel.add(correct, "correct");
 			cardLayout.show(cardPanel, "correct");
 		} else {
