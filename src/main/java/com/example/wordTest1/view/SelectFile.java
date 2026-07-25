@@ -16,6 +16,9 @@ public class SelectFile extends JPanel {
 		JButton selectFileBtn = new JButton("ファイルを選択する");
 		selectFileBtn.addActionListener(e -> mainController.selectFile());
 
+		Layout layout = new Layout();
+		layout.btnLayout(selectFileBtn);
+
 		//ボタンを追加
 		add(selectFileBtn);
 
