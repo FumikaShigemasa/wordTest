@@ -2,8 +2,6 @@ package com.example.wordTest1.view.quiz;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,6 +9,7 @@ import javax.swing.JPanel;
 
 import com.example.wordTest1.model.QuizModel;
 import com.example.wordTest1.presenter.MainPresenter;
+import com.example.wordTest1.service.LayoutService;
 
 public class Correct extends JPanel {
 
@@ -36,22 +35,8 @@ public class Correct extends JPanel {
 		//======レイアウト======
 		//結果表示パネル
 		JPanel result = new JPanel();
-		GridBagLayout resultLayout = new GridBagLayout();
-		result.setLayout(resultLayout);
-		GridBagConstraints gbc = new GridBagConstraints();
-
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		resultLayout.setConstraints(correct, gbc);
-
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		resultLayout.setConstraints(question, gbc);
-
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		resultLayout.setConstraints(answer, gbc);
-
+		LayoutService layout = new LayoutService();
+		layout.positionVer(result, correct, question, answer);
 		result.add(correct);
 		result.add(question);
 		result.add(answer);
