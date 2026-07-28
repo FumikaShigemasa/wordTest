@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.example.wordTest1.presenter.MainPresenter;
+import com.example.wordTest1.service.LayoutService;
 
 public class SelectFile extends JPanel {
 
@@ -16,8 +17,11 @@ public class SelectFile extends JPanel {
 		JButton selectFileBtn = new JButton("ファイルを選択する");
 		selectFileBtn.addActionListener(e -> mainController.selectFile());
 
-		Layout layout = new Layout();
+		//レイアウト
+		LayoutService layout = new LayoutService();
 		layout.btnLayout(selectFileBtn);
+		layout.positionVer(this, selectFileBtn);
+		layout.background(this);
 
 		//ボタンを追加
 		add(selectFileBtn);
