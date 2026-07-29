@@ -1,15 +1,14 @@
 package com.example.wordTest1.view.quiz;
 
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import com.example.wordTest1.model.QuizModel;
 import com.example.wordTest1.presenter.MainPresenter;
+import com.example.wordTest1.service.LayoutService;
 
 public class Quiz extends JPanel {
 
@@ -17,24 +16,26 @@ public class Quiz extends JPanel {
 			MainPresenter controller,
 			QuizModel quizModel) {
 
+		LayoutService layout = new LayoutService();
+
 		//======問題文======
-		JLabel question = new JLabel("<html>" + quizModel.getQuestionStr() + "<html>");
+		JTextArea question = new JTextArea(quizModel.getQuestionStr());
 		JPanel questionPanel = new JPanel();
 		questionPanel.add(question);
 		//------------------
 
 		//======選択肢リスト======
-		List<JLabel> labelList = new ArrayList<JLabel>();
-		for (int i = 0; i < quizModel.getOptionList().length; i++) {
+		String[] optionList = quizModel.getOptionList();
+		JTextArea[] textList = new JTextArea[optionList.length];
 
-			String[] optionList = quizModel.getOptionList();
+		for (int i = 0; i < optionList.length; i++) {
 			int num = i + 1;
-			labelList.add(new JLabel("<html>" + num + ", " + optionList[i] + "<html>"));
+			textList[i] = new JTextArea(num + ", " + optionList[i]);
 		}
 
 		JPanel optionPanel = new JPanel(new GridLayout(4, 1));
-		for (JLabel label : labelList) {
-			optionPanel.add(label);
+		for (JTextArea text : textList) {
+			optionPanel.add(text);
 		}
 		//----------------------
 
@@ -57,6 +58,13 @@ public class Quiz extends JPanel {
 		buttonPanel.add(button3);
 		buttonPanel.add(button4);
 		//----------------------
+
+		//======レイアウト======
+		layout.textLayout(question);
+		layout.textLayout(textList);
+		layout.btnLayout(button1, button2, button3, button4);
+
+		//-------------------
 
 		setLayout(new GridLayout(3, 1));
 		add(questionPanel);
