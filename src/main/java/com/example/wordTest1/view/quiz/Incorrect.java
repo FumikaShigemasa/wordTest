@@ -1,5 +1,6 @@
 package com.example.wordTest1.view.quiz;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,9 +21,14 @@ public class Incorrect extends JPanel {
 		JButton mainMenu = new JButton("メインメニューへ");
 		mainMenu.addActionListener(e -> controller.mainMenu());
 
+		ImageIcon image = new ImageIcon("./../../image/incorrect.png");
+
+		JLabel img = new JLabel(image);
+
 		add(label);
 		add(next);
 		add(mainMenu);
+		add(img);
 	}
 
 }

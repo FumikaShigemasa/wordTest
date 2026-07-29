@@ -113,7 +113,6 @@ public class ReadExcelService {
 		String mean = "";
 		if (cell != null) {
 			mean = cell.getStringCellValue();
-			mean.replace("\n", "<br>");
 		}
 
 		return mean;
