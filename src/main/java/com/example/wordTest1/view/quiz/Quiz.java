@@ -1,5 +1,6 @@
 package com.example.wordTest1.view.quiz;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ public class Quiz extends JPanel {
 		//======問題文======
 		JTextArea question = new JTextArea(quizModel.getQuestionStr());
 		JPanel questionPanel = new JPanel();
+		questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
 		questionPanel.add(question);
 		//------------------
 
@@ -30,7 +32,7 @@ public class Quiz extends JPanel {
 
 		for (int i = 0; i < optionList.length; i++) {
 			int num = i + 1;
-			textList[i] = new JTextArea(num + ", " + optionList[i]);
+			textList[i] = new JTextArea(num + ",\n" + optionList[i], 5, 40);
 		}
 
 		JPanel optionPanel = new JPanel(new GridLayout(4, 1));
@@ -52,7 +54,7 @@ public class Quiz extends JPanel {
 		JButton button4 = new JButton("4");
 		button4.addActionListener(e -> controller.checkAnswer(button4));
 
-		JPanel buttonPanel = new JPanel(new GridLayout(1, 4));
+		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
 		buttonPanel.add(button1);
 		buttonPanel.add(button2);
 		buttonPanel.add(button3);
@@ -63,10 +65,10 @@ public class Quiz extends JPanel {
 		layout.textLayout(question);
 		layout.textLayout(textList);
 		layout.btnLayout(button1, button2, button3, button4);
-
+		layout.background(this, questionPanel, optionPanel, buttonPanel);
 		//-------------------
 
-		setLayout(new GridLayout(3, 1));
+		layout.positionVer(this, questionPanel, optionPanel, buttonPanel);
 		add(questionPanel);
 		add(optionPanel);
 		add(buttonPanel);
