@@ -13,13 +13,14 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 
 public class LayoutService {
 
 	//ボタンのレイアウト設定
 	public void btnLayout(JButton... btnList) {
 		for (JButton btn : btnList) {
-			btn.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));//フォント
+			btn.setFont(new Font("UD デジタル 教科書体 NK", Font.PLAIN, 20));//フォント
 			btn.setForeground(new Color(255, 255, 255));//背景色
 			btn.setBackground(new Color(183, 40, 46));//文字の色
 			btn.setMargin(new Insets(15, 15, 15, 15));//余白
@@ -29,32 +30,42 @@ public class LayoutService {
 	//ラジオボタンの設定
 	public void radioBtnLayout(JRadioButton... radioList) {
 		for (JRadioButton radio : radioList) {
-			radio.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));//フォント
-			radio.setOpaque(false);//背景を透明に
+			radio.setFont(new Font("UD デジタル 教科書体 NK", Font.PLAIN, 20));//フォント
 		}
+
+		transparent(radioList);
 	}
 
 	//本文ラベルのレイアウト設定
-	public void textLayout(JLabel... labelList) {
-		for (JLabel label : labelList) {
-			label.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 16));//フォント
-			label.setOpaque(false);//背景を透明に
+	public void textLayout(JTextArea... textList) {
+		for (JTextArea text : textList) {
+			text.setFont(new Font("UD デジタル 教科書体 NK", Font.PLAIN, 16));//フォント
 		}
+
+		transparent(textList);
 	}
 
 	//タイトルラベルのレイアウト設定
 	public void titleLayout(JLabel... labelList) {
 		for (JLabel label : labelList) {
-			label.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));//フォント
+			label.setFont(new Font("UD デジタル 教科書体 NK", Font.PLAIN, 24));//フォント
 			label.setBorder(BorderFactory.createEmptyBorder(40, 0, 10, 0));//上下の余白
-			label.setOpaque(false);//背景を透明に
 		}
+
+		transparent(labelList);
 	}
 
 	//背景色の設定
 	public void background(JPanel... panelList) {
 		for (JPanel panel : panelList) {
 			panel.setBackground(new Color(237, 228, 225));
+		}
+	}
+
+	//背景を透明にする
+	public void transparent(JComponent... componentList) {
+		for (JComponent component : componentList) {
+			component.setOpaque(false);
 		}
 	}
 

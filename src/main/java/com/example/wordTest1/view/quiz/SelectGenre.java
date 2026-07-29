@@ -97,7 +97,8 @@ public class SelectGenre extends JPanel {
 				techRadio, manageRadio, straRadio, wordRadio, meanRadio);
 		layout.btnLayout(startBtn);
 		layout.titleLayout(genreLabel, formatLabel);
-		layout.background(genrePanel, formatPanel, startPanel);
+		layout.background(this, genrePanel, formatPanel, startPanel);
+		layout.transparent(genreRadioPanel, formatRadioPanel);
 		//------------------
 
 		//各パネルを親のパネルに追加
