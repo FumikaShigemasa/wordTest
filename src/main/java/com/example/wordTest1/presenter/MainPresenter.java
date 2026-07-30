@@ -9,9 +9,11 @@ import javax.swing.JPanel;
 import com.example.wordTest1.model.ExcelModel;
 import com.example.wordTest1.model.JodgeModel;
 import com.example.wordTest1.model.QuizModel;
+import com.example.wordTest1.model.ResultModel;
 import com.example.wordTest1.service.MakeQuestionService;
 import com.example.wordTest1.service.ReadExcelService;
 import com.example.wordTest1.view.SelectMode;
+import com.example.wordTest1.view.quiz.LastResult;
 import com.example.wordTest1.view.quiz.Quiz;
 import com.example.wordTest1.view.quiz.Result;
 import com.example.wordTest1.view.quiz.SelectGenre;
@@ -24,6 +26,7 @@ public class MainPresenter {
 	private final ExcelModel excel = new ExcelModel();
 	private final QuizModel quizModel = new QuizModel();
 	private final JodgeModel jodgeModel = new JodgeModel();
+	private final ResultModel resultModel = new ResultModel();
 
 	private JPanel cardPanel;
 	private CardLayout cardLayout;
@@ -112,7 +115,7 @@ public class MainPresenter {
 		//選択したボタンのテキストをInteger型で取得
 		Integer selectNum = Integer.parseInt(selectBtn.getText());
 		//正誤判定
-		makeQuestion.judge(selectNum, quizModel, jodgeModel);
+		makeQuestion.judge(selectNum, quizModel, jodgeModel, resultModel);
 
 		//正解→Correct 不正解→Incorrectに画面遷移
 
@@ -141,11 +144,17 @@ public class MainPresenter {
 
 	}
 
-	public void mainMenu() {
-		//SelectMode画面に遷移
-		JPanel selectMode = new SelectMode(this);
-		cardPanel.add(selectMode, "selectMode");
-		cardLayout.show(cardPanel, "selectMode");
+	public void end() {
+		makeQuestion.judgeComent(resultModel);
+
+		//LastResult画面に遷移
+		JPanel lastResult = new LastResult(this, resultModel);
+		cardPanel.add(lastResult, "lastResult");
+		cardLayout.show(cardPanel, "lastResult");
+	}
+
+	public void toGenre() {
+		cardLayout.show(cardPanel, "selectGenre");
 	}
 
 }

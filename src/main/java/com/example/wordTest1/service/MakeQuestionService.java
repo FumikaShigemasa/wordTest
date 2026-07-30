@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import com.example.wordTest1.model.ExcelModel;
 import com.example.wordTest1.model.JodgeModel;
 import com.example.wordTest1.model.QuizModel;
+import com.example.wordTest1.model.ResultModel;
 
 public class MakeQuestionService {
 
@@ -193,25 +194,26 @@ public class MakeQuestionService {
 	public void judge(
 			Integer btnNum,
 			QuizModel quizModel,
-			JodgeModel jodgeModel) {
+			JodgeModel jodgeModel,
+			ResultModel resultModel) {
 		//選択した解答と正答のStringを取得
 		String correct = quizModel.getAnswer();
 		String select = quizModel.getOptionList()[btnNum - 1];
-
-		System.out.println("正誤判定");
-		System.out.println("解答：" + btnNum + select + "正解：" + correct);
 
 		//正誤判定
 		if (correct.equals(select)) {
 			jodgeModel.setResult("正解!!");
 			jodgeModel.setImg(
 					image("correct"));
-			System.out.println("正解");
+
+			resultModel.setCount(resultModel.getCount() + 1);
+			resultModel.setQuestionCount(resultModel.getQuestionCount() + 1);
 		} else {
 			jodgeModel.setResult("残念...");
 			jodgeModel.setImg(
 					image("incorrect"));
-			System.out.println("不正解");
+
+			resultModel.setQuestionCount(resultModel.getQuestionCount() + 1);
 		}
 
 	}
@@ -226,5 +228,29 @@ public class MakeQuestionService {
 		return filePass;
 	}
 	//---------------------------
+
+	//======最終結果表示======
+	public void judgeComent(ResultModel resultModel) {
+		int count = resultModel.getCount();
+		int questionCount = resultModel.getQuestionCount();
+
+		double rate = count / questionCount * 100;
+
+		if (rate <= 50) {
+			resultModel.setComent("がんばろう!!");
+			resultModel.setImg("/images/result/img50.png");
+		} else if (rate <= 70) {
+			resultModel.setComent("この調子!!");
+			resultModel.setImg("/images/result/img70.png");
+		} else if (rate <= 90) {
+			resultModel.setComent("あと少し!!");
+			resultModel.setImg("/images/result/img90.png");
+		} else {
+			resultModel.setComent("よくできました!!");
+			resultModel.setImg("/images/result/img100.png");
+		}
+
+	}
+	//-----------------------
 
 }

@@ -42,7 +42,7 @@ public class Result extends JPanel {
 
 		//メインメニューへボタン
 		JButton end = new JButton("終了する");
-		end.addActionListener(e -> controller.mainMenu());
+		end.addActionListener(e -> controller.end());
 
 		//======レイアウト======
 		//結果表示パネル
