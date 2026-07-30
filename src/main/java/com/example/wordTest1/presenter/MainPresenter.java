@@ -7,13 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.example.wordTest1.model.ExcelModel;
+import com.example.wordTest1.model.JodgeModel;
 import com.example.wordTest1.model.QuizModel;
 import com.example.wordTest1.service.MakeQuestionService;
 import com.example.wordTest1.service.ReadExcelService;
 import com.example.wordTest1.view.SelectMode;
-import com.example.wordTest1.view.quiz.Correct;
-import com.example.wordTest1.view.quiz.Incorrect;
 import com.example.wordTest1.view.quiz.Quiz;
+import com.example.wordTest1.view.quiz.Result;
 import com.example.wordTest1.view.quiz.SelectGenre;
 
 public class MainPresenter {
@@ -23,6 +23,7 @@ public class MainPresenter {
 
 	private final ExcelModel excel = new ExcelModel();
 	private final QuizModel quizModel = new QuizModel();
+	private final JodgeModel jodgeModel = new JodgeModel();
 
 	private JPanel cardPanel;
 	private CardLayout cardLayout;
@@ -111,19 +112,13 @@ public class MainPresenter {
 		//選択したボタンのテキストをInteger型で取得
 		Integer selectNum = Integer.parseInt(selectBtn.getText());
 		//正誤判定
-		boolean judge = makeQuestion.judge(selectNum, quizModel);
+		makeQuestion.judge(selectNum, quizModel, jodgeModel);
 
 		//正解→Correct 不正解→Incorrectに画面遷移
-		if (judge) {
-			JPanel correct = new Correct(this, quizModel);
-			cardPanel.add(correct, "correct");
-			cardLayout.show(cardPanel, "correct");
-		} else {
-			JPanel incorrect = new Incorrect(this);
-			cardPanel.add(incorrect, "incorrect");
-			cardLayout.show(cardPanel, "incorrect");
 
-		}
+		JPanel result = new Result(this, quizModel, jodgeModel);
+		cardPanel.add(result, "result");
+		cardLayout.show(cardPanel, "result");
 
 	}
 
