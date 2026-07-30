@@ -20,9 +20,9 @@ public class LayoutService {
 	//ボタンのレイアウト設定
 	public void btnLayout(JButton... btnList) {
 		for (JButton btn : btnList) {
-			btn.setFont(new Font("BIZ UDPゴシック", Font.PLAIN, 20));//フォント
-			btn.setForeground(new Color(255, 255, 255));//背景色
-			btn.setBackground(new Color(183, 40, 46));//文字の色
+			btn.setFont(new Font("BIZ UDPゴシック", Font.BOLD, 20));//フォント
+			btn.setForeground(new Color(255, 255, 255));//文字の色
+			btn.setBackground(new Color(255, 128, 64));//背景の色
 			btn.setMargin(new Insets(15, 15, 15, 15));//余白
 		}
 	}
@@ -40,6 +40,7 @@ public class LayoutService {
 	public void textLayout(JTextArea... textList) {
 		for (JTextArea text : textList) {
 			text.setFont(new Font("BIZ UDPゴシック", Font.PLAIN, 16));//フォント
+			text.setForeground(new Color(32, 55, 68));
 			text.setMargin(new Insets(20, 10, 20, 10));
 			text.setLineWrap(true);//端で折り返す
 			text.setEditable(false);//編集を不可にする
@@ -51,7 +52,8 @@ public class LayoutService {
 	//タイトルラベルのレイアウト設定
 	public void titleLayout(JLabel... labelList) {
 		for (JLabel label : labelList) {
-			label.setFont(new Font("BIZ UDPゴシック", Font.PLAIN, 24));//フォント
+			label.setFont(new Font("BIZ UDPゴシック", Font.BOLD, 24));//フォント
+			label.setForeground(new Color(32, 55, 68));
 			label.setBorder(BorderFactory.createEmptyBorder(40, 0, 10, 0));//上下の余白
 		}
 
@@ -66,7 +68,7 @@ public class LayoutService {
 	//背景色の設定
 	public void background(JPanel... panelList) {
 		for (JPanel panel : panelList) {
-			panel.setBackground(new Color(237, 228, 225));
+			panel.setBackground(new Color(245, 241, 220));
 		}
 	}
 

@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import com.example.wordTest1.model.ExcelModel;
+import com.example.wordTest1.model.JodgeModel;
 import com.example.wordTest1.model.QuizModel;
 
 public class MakeQuestionService {
@@ -189,9 +190,10 @@ public class MakeQuestionService {
 	//----------------------------
 
 	//==========正誤判定==========
-	public boolean judge(
+	public void judge(
 			Integer btnNum,
-			QuizModel quizModel) {
+			QuizModel quizModel,
+			JodgeModel jodgeModel) {
 		//選択した解答と正答のStringを取得
 		String correct = quizModel.getAnswer();
 		String select = quizModel.getOptionList()[btnNum - 1];
@@ -199,18 +201,29 @@ public class MakeQuestionService {
 		System.out.println("正誤判定");
 		System.out.println("解答：" + btnNum + select + "正解：" + correct);
 
-		//正誤判定（t→正解　f→不正解）
-		boolean judge;
+		//正誤判定
 		if (correct.equals(select)) {
-			judge = true;
+			jodgeModel.setResult("正解!!");
+			jodgeModel.setImg(
+					image("correct"));
 			System.out.println("正解");
 		} else {
-			judge = false;
+			jodgeModel.setResult("残念...");
+			jodgeModel.setImg(
+					image("incorrect"));
 			System.out.println("不正解");
 		}
 
-		return judge;
+	}
 
+	//画像の決定
+	public String image(String result) {
+		Integer imgNum = rand.nextInt(3);
+		String fileName = "img" + (imgNum + 1);
+
+		String filePass = "/images/" + result + "/" + fileName + ".png";
+
+		return filePass;
 	}
 	//---------------------------
 
